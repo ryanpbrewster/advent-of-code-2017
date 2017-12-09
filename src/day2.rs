@@ -31,6 +31,21 @@ fn checksum(sheet: &Spreadsheet) -> u32 {
         .sum()
 }
 
+#[allow(dead_code)]
+fn divisor_checksum(sheet: &Spreadsheet) -> u32 {
+    let mut total = 0;
+    for r in &sheet.rows {
+        for &n in r {
+            let divisor = r.iter().find(|&&d| d < n && n % d == 0);
+            if let Some(&d) = divisor {
+                total += n / d;
+                break;
+            }
+        }
+    }
+    total
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -61,5 +76,6 @@ mod test {
             },
         };
         assert_eq!(checksum(&input), 44216);
+        assert_eq!(divisor_checksum(&input), 320);
     }
 }
