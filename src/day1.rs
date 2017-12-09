@@ -17,7 +17,7 @@ last digit, 9.
 */
 
 #[allow(dead_code)]
-fn solve(xs: Vec<u32>) -> u32 {
+fn solve(xs: &[u32]) -> u32 {
     let mut total: u32 = 0;
     for i in 0..xs.len() {
         if xs[i] == xs[(i + 1) % xs.len()] {
@@ -27,16 +27,28 @@ fn solve(xs: Vec<u32>) -> u32 {
     total
 }
 
+#[allow(dead_code)]
+fn solve2(xs: &[u32]) -> u32 {
+    assert_eq!(xs.len() % 2, 0);
+    let mut total: u32 = 0;
+    for i in 0..xs.len() {
+        if xs[i] == xs[(i + xs.len() / 2) % xs.len()] {
+            total += xs[i];
+        }
+    }
+    total
+}
+
 #[cfg(test)]
 mod test {
-    use super::solve;
+    use super::*;
 
     #[test]
     fn small() {
-        assert_eq!(solve(vec![1, 1, 2, 2]), 3);
-        assert_eq!(solve(vec![1, 1, 1, 1]), 4);
-        assert_eq!(solve(vec![1, 2, 3, 4]), 0);
-        assert_eq!(solve(vec![9, 1, 2, 1, 2, 1, 2, 9]), 9);
+        assert_eq!(solve(&vec![1, 1, 2, 2]), 3);
+        assert_eq!(solve(&vec![1, 1, 1, 1]), 4);
+        assert_eq!(solve(&vec![1, 2, 3, 4]), 0);
+        assert_eq!(solve(&vec![9, 1, 2, 1, 2, 1, 2, 9]), 9);
     }
 
     use std::fs::File;
@@ -44,12 +56,13 @@ mod test {
     use std::path::Path;
     #[test]
     fn main() {
-        let input = {
+        let input: Vec<u32> = {
             let mut fin = File::open(Path::new("data/day1/input.txt")).expect("open file");
             let mut buf = String::new();
             fin.read_to_string(&mut buf).expect("read file");
             buf.chars().flat_map(|ch| ch.to_digit(10)).collect()
         };
-        assert_eq!(solve(input), 1141);
+        assert_eq!(solve(&input), 1141);
+        assert_eq!(solve2(&input), 950);
     }
 }
