@@ -10,7 +10,6 @@ offset of that instruction increases by 1. So, if you come across an offset of
 time it is encountered.
 */
 
-#[allow(dead_code)]
 fn solve(mut jumps: Vec<i32>) -> usize {
     let mut cur: i32 = 0;
     let mut count = 0;
@@ -23,7 +22,6 @@ fn solve(mut jumps: Vec<i32>) -> usize {
     count
 }
 
-#[allow(dead_code)]
 fn solve2(mut jumps: Vec<i32>) -> usize {
     let mut cur: i32 = 0;
     let mut count = 0;

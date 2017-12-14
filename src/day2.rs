@@ -17,12 +17,10 @@ The third row: 8 - 2 == 6.
 The spreadsheet's checksum would be 8 + 4 + 6 = 18.
 */
 
-#[allow(dead_code)]
 struct Spreadsheet {
     rows: Vec<Vec<u32>>,
 }
 
-#[allow(dead_code)]
 fn checksum(sheet: &Spreadsheet) -> u32 {
     sheet
         .rows
@@ -31,7 +29,6 @@ fn checksum(sheet: &Spreadsheet) -> u32 {
         .sum()
 }
 
-#[allow(dead_code)]
 fn divisor_checksum(sheet: &Spreadsheet) -> u32 {
     let mut total = 0;
     for r in &sheet.rows {

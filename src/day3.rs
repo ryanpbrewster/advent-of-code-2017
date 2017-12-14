@@ -18,6 +18,7 @@ the data and square 1.
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 struct Location(i32, i32);
+
 impl Location {
     fn l1(&self) -> i32 {
         self.0.abs() + self.1.abs()
@@ -38,6 +39,7 @@ struct Spiral {
     len: u32,
     count: u32,
 }
+
 impl Spiral {
     pub fn new() -> Spiral {
         Spiral {

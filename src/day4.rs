@@ -8,14 +8,12 @@ To ensure security, a valid passphrase must contain no duplicate words.
 
 use std::collections::HashSet;
 
-#[allow(dead_code)]
 fn is_valid_pw(pw: &str) -> bool {
     let words = pw.split_whitespace().collect::<Vec<_>>();
     let uniques: HashSet<_> = words.iter().collect();
     words.len() == uniques.len()
 }
 
-#[allow(dead_code)]
 fn is_valid_anagram_pw(pw: &str) -> bool {
     let words = pw.split_whitespace().collect::<Vec<&str>>();
     let uniques: HashSet<_> = words

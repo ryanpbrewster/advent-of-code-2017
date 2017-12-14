@@ -16,7 +16,6 @@ digit and the third digit (2) matches the fourth digit.
 last digit, 9.
 */
 
-#[allow(dead_code)]
 fn solve(xs: &[u32]) -> u32 {
     let mut total: u32 = 0;
     for i in 0..xs.len() {
@@ -27,7 +26,6 @@ fn solve(xs: &[u32]) -> u32 {
     total
 }
 
-#[allow(dead_code)]
 fn solve2(xs: &[u32]) -> u32 {
     assert_eq!(xs.len() % 2, 0);
     let mut total: u32 = 0;
