@@ -146,7 +146,7 @@ mod test {
         let graph = parse_graph(&buf.lines().collect::<Vec<_>>());
         assert_eq!(
             *toposort(&graph).last().unwrap(),
-            Label(String::from("tknk"))
+            Label(String::from("vtzay"))
         );
     }
 }
