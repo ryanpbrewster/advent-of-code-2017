@@ -62,7 +62,7 @@ mod test {
     }
 
     #[test]
-    fn main() {
+    fn part1() {
         let a = Generator {
             value: 277,
             multiplier: 16807,
@@ -79,6 +79,27 @@ mod test {
                 .filter(|&(m, n)| (m & 0xFFFF) == (n & 0xFFFF))
                 .count(),
             592
+        );
+    }
+
+    #[test]
+    fn part2() {
+        let a = Generator {
+            value: 277,
+            multiplier: 16807,
+            modulus: 2147483647,
+        }.filter(|&m| m % 4 == 0);
+        let b = Generator {
+            value: 349,
+            multiplier: 48271,
+            modulus: 2147483647,
+        }.filter(|&n| n % 8 == 0);
+        assert_eq!(
+            a.zip(b)
+                .take(5_000_000)
+                .filter(|&(m, n)| (m & 0xFFFF) == (n & 0xFFFF))
+                .count(),
+            320
         );
     }
 }
